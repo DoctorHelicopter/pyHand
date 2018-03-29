@@ -15,8 +15,6 @@ pi.set_mode(buttonPin, pigpio.INPUT)
 pi.set_pull_up_down(buttonPin, pigpio.PUD_UP)
 pi.set_glitch_filter(buttonPin, 5000) # 5000 micros debounce
 
-cb = pi.callback(buttonPin, pigpio.EITHER_EDGE, callback)
-
 camera = PiCamera()
 camera.resolution = (1024, 768)
 camera.start_preview()
@@ -32,6 +30,8 @@ def take_picture():
     camera.capture(filename)
     print("Picture added! {}".format(filename))
 
+
+cb = pi.callback(buttonPin, pigpio.EITHER_EDGE, callback)
     
 while True: # all the work is done in the callback
     time.sleep(1)
