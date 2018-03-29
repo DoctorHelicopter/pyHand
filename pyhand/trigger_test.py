@@ -17,6 +17,9 @@ def take_picture():
     print("Picture added! {}".format(filename))
 
 if __name__=="__main__":
+    global pi
+    global camera 
+     
     pi = pigpio.pi()
     if not pi.connected:
         exit()
